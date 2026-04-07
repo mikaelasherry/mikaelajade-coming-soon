@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mikaela Jade — Coming Soon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;0,300;0,400;1,200;1,300&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --cream:   #F7F4EF;
+  --warm:    #FDFCFA;
+  --ink:     #0d2a3f;
+  --ink-l:   #1a4a63;
+  --ink-m:   #4a7a96;
+  --ink-f:   #a0c8dc;
+  --topaz:   #7ec8e3;
+  --topaz-l: #b0dff0;
+  --topaz-d: #4a9bbe;
+  --serif:   'Raleway', sans-serif;
+  --sans:    'Lato', sans-serif;
+}
+html, body {
+  min-height: 100vh;
+  font-family: var(--sans);
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+body {
+  background: var(--ink);
+  color: var(--cream);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 48px 24px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* subtle star field */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 15% 20%, rgba(176,223,240,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 72% 14%, rgba(176,223,240,0.4) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 40% 70%, rgba(200,200,200,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 88% 55%, rgba(176,223,240,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 28% 88%, rgba(176,223,240,0.25) 0%, transparent 100%),
+    radial-gradient(1px 1px at 60% 38%, rgba(255,255,255,0.2) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 5% 50%, rgba(176,223,240,0.2) 0%, transparent 100%),
+    radial-gradient(1px 1px at 93% 82%, rgba(176,223,240,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 50% 5%, rgba(255,255,255,0.25) 0%, transparent 100%),
+    radial-gradient(1px 1px at 80% 95%, rgba(176,223,240,0.2) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.page-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 560px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+/* Logo */
+.logo-wrap {
+  margin-bottom: 32px;
+  animation: fadeDown 1s ease-out forwards;
+  opacity: 0;
+}
+.logo-mark {
+  width: 96px;
+  height: 96px;
+}
+
+/* Brand name */
+.brand-name {
+  font-family: var(--serif);
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(247,244,239,0.5);
+  margin-bottom: 48px;
+  animation: fadeDown 1s ease-out 0.15s forwards;
+  opacity: 0;
+}
+
+/* Eyebrow */
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--topaz);
+  margin-bottom: 20px;
+  font-family: var(--sans);
+  font-weight: 400;
+  animation: fadeDown 1s ease-out 0.25s forwards;
+  opacity: 0;
+}
+
+/* Headline */
+.headline {
+  font-family: var(--serif);
+  font-size: clamp(38px, 8vw, 62px);
+  font-weight: 200;
+  line-height: 1.08;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--cream);
+  margin-bottom: 24px;
+  animation: fadeDown 1s ease-out 0.35s forwards;
+  opacity: 0;
+}
+.headline em {
+  font-style: italic;
+  color: var(--topaz);
+}
+
+/* Tagline */
+.tagline {
+  font-family: var(--serif);
+  font-size: clamp(14px, 2.4vw, 17px);
+  font-weight: 200;
+  font-style: italic;
+  color: rgba(247,244,239,0.55);
+  letter-spacing: 0.04em;
+  line-height: 1.7;
+  margin-bottom: 52px;
+  animation: fadeDown 1s ease-out 0.45s forwards;
+  opacity: 0;
+}
+
+/* Divider */
+.divider {
+  width: 48px;
+  height: 0.5px;
+  background: rgba(126,200,227,0.3);
+  margin: 0 auto 52px;
+  animation: fadeIn 1s ease-out 0.55s forwards;
+  opacity: 0;
+}
+
+/* Form section */
+.form-label {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(247,244,239,0.4);
+  margin-bottom: 24px;
+  font-family: var(--sans);
+  animation: fadeIn 1s ease-out 0.6s forwards;
+  opacity: 0;
+}
+
+.capture-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: fadeIn 1s ease-out 0.7s forwards;
+  opacity: 0;
+}
+
+.input-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left;
+}
+.field label {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(176,223,240,0.5);
+  font-family: var(--sans);
+}
+.field input {
+  background: rgba(255,255,255,0.04);
+  border: 0.5px solid rgba(126,200,227,0.2);
+  color: var(--cream);
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 300;
+  padding: 13px 16px;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+  border-radius: 0;
+  -webkit-appearance: none;
+  width: 100%;
+}
+.field input::placeholder {
+  color: rgba(247,244,239,0.2);
+}
+.field input:focus {
+  border-color: rgba(126,200,227,0.55);
+  background: rgba(255,255,255,0.07);
+}
+
+.btn-submit {
+  width: 100%;
+  background: var(--topaz);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 16px 32px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  margin-top: 4px;
+}
+.btn-submit:hover {
+  background: var(--topaz-l);
+}
+.btn-submit:active {
+  background: var(--topaz-d);
+  color: var(--cream);
+}
+
+.privacy-note {
+  font-size: 10px;
+  color: rgba(247,244,239,0.22);
+  letter-spacing: 0.06em;
+  margin-top: 4px;
+  font-family: var(--sans);
+}
+
+/* Success state */
+.success-msg {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 32px 0 4px;
+  animation: fadeIn 0.6s ease-out forwards;
+}
+.success-msg .check {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 0.5px solid rgba(126,200,227,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.success-msg p {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 200;
+  font-style: italic;
+  color: var(--cream);
+  letter-spacing: 0.04em;
+}
+.success-msg span {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(247,244,239,0.35);
+}
+
+/* Footer line */
+.footer-line {
+  margin-top: 64px;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(247,244,239,0.18);
+  font-family: var(--sans);
+  animation: fadeIn 1.2s ease-out 1s forwards;
+  opacity: 0;
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .input-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="page-inner">
+
+  <div class="logo-wrap">
+    <svg class="logo-mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+      <circle cx="60" cy="60" r="60" fill="#0d2a3f"/>
+      <g transform="translate(60,60)">
+        <path d="M 0,-44 C -0.6,-21.8 -20.8,-5.4 -31.8,0 C -20.8,5.4 -0.6,21.8 0,44 C 0.6,21.8 20.8,5.4 31.8,0 C 20.8,-5.4 0.6,-21.8 0,-44 Z"
+          fill="none" stroke="#7ec8e3" stroke-width="2.2" stroke-linejoin="round"/>
+        <path d="M 0,-44 C -0.6,-21.8 -20.8,-5.4 -31.8,0 C -20.8,5.4 -0.6,21.8 0,44 C 0.6,21.8 20.8,5.4 31.8,0 C 20.8,-5.4 0.6,-21.8 0,-44 Z"
+          fill="none" stroke="#b0dff0" stroke-width="0.5" stroke-linejoin="round" opacity="0.45"/>
+        <circle cx="0" cy="0" r="9.8" fill="#c0e8f8" opacity="0.08"/>
+        <circle cx="0" cy="0" r="6.1" fill="#c0e8f8" opacity="0.16"/>
+        <circle cx="0" cy="0" r="3.6" fill="#e8f6ff"/>
+        <circle cx="0"    cy="-44" r="5.5" fill="#c0e8f8" opacity="0.18"/>
+        <circle cx="0"    cy="-44" r="3.4" fill="#c0e8f8" opacity="0.28"/>
+        <circle cx="0"    cy="-44" r="2.0" fill="#e8f6ff"/>
+        <circle cx="31.8" cy="0"   r="5.5" fill="#c0e8f8" opacity="0.18"/>
+        <circle cx="31.8" cy="0"   r="3.4" fill="#c0e8f8" opacity="0.28"/>
+        <circle cx="31.8" cy="0"   r="2.0" fill="#e8f6ff"/>
+        <circle cx="0"    cy="44"  r="5.5" fill="#c0e8f8" opacity="0.18"/>
+        <circle cx="0"    cy="44"  r="3.4" fill="#c0e8f8" opacity="0.28"/>
+        <circle cx="0"    cy="44"  r="2.0" fill="#e8f6ff"/>
+        <circle cx="-31.8" cy="0" r="5.5" fill="#c0e8f8" opacity="0.18"/>
+        <circle cx="-31.8" cy="0" r="3.4" fill="#c0e8f8" opacity="0.28"/>
+        <circle cx="-31.8" cy="0" r="2.0" fill="#e8f6ff"/>
+      </g>
+    </svg>
+  </div>
+
+  <p class="brand-name">Mikaela Jade</p>
+
+  <span class="eyebrow">Something rare is forming</span>
+
+  <h1 class="headline">Coming<br><em>Soon</em></h1>
+
+  <p class="tagline">Forged in a star's final pulse.<br>Worn with intention.</p>
+
+  <div class="divider"></div>
+
+  <p class="form-label">Get early access</p>
+
+  <form class="capture-form" id="captureForm" novalidate>
+    <div class="input-row">
+      <div class="field">
+        <label for="firstName">First name</label>
+        <input type="text" id="firstName" name="firstName" placeholder="Mikaela" autocomplete="given-name">
+      </div>
+      <div class="field">
+        <label for="lastName">Last name</label>
+        <input type="text" id="lastName" name="lastName" placeholder="Jade" autocomplete="family-name">
+      </div>
+    </div>
+    <div class="field">
+      <label for="email">Email address *</label>
+      <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+    </div>
+    <div class="field">
+      <label for="phone">Phone <span style="opacity:0.5; font-size:9px;">(optional — SMS drops first)</span></label>
+      <input type="tel" id="phone" name="phone" placeholder="+1 (312) 555-0100" autocomplete="tel">
+    </div>
+    <button type="submit" class="btn-submit" id="submitBtn">Notify me at launch</button>
+    <p class="privacy-note">No spam, ever. Unsubscribe anytime.</p>
+  </form>
+
+  <div class="success-msg" id="successMsg">
+    <div class="check">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polyline points="4,10 8,14 16,6" stroke="#7ec8e3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <p>You're on the list.</p>
+    <span>We'll be in touch before anyone else.</span>
+  </div>
+
+  <p class="footer-line">© 2026 Mikaela Jade &nbsp;·&nbsp; mikaelajade.com</p>
+
+</div>
+
+<script>
+(function() {
+  const form = document.getElementById('captureForm');
+  const successMsg = document.getElementById('successMsg');
+  const emailInput = document.getElementById('email');
+  const submitBtn = document.getElementById('submitBtn');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const email = emailInput.value.trim();
+    if (!email || !email.includes('@')) {
+      emailInput.style.borderColor = 'rgba(220,80,80,0.6)';
+      emailInput.focus();
+      return;
+    }
+    emailInput.style.borderColor = '';
+
+    const firstName = document.getElementById('firstName').value.trim();
+    const lastName  = document.getElementById('lastName').value.trim();
+    const phone     = document.getElementById('phone').value.trim();
+
+    submitBtn.textContent = 'Saving…';
+    submitBtn.disabled = true;
+
+    // ─── Replace this fetch block with your real form endpoint ───
+    // e.g. Formspree: fetch('https://formspree.io/f/YOUR_ID', {...})
+    // e.g. Mailchimp, ConvertKit, Beehiiv, etc.
+    // For now we simulate a 1-second network call:
+    setTimeout(function() {
+      console.log('Signup captured:', { firstName, lastName, email, phone });
+      form.style.display = 'none';
+      successMsg.style.display = 'flex';
+    }, 900);
+    // ─────────────────────────────────────────────────────────────
+  });
+})();
+</script>
+
+</body>
+</html>
