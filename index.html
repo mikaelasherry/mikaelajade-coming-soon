@@ -410,16 +410,22 @@ body::before {
     submitBtn.textContent = 'Saving…';
     submitBtn.disabled = true;
 
-    // ─── Replace this fetch block with your real form endpoint ───
-    // e.g. Formspree: fetch('https://formspree.io/f/YOUR_ID', {...})
-    // e.g. Mailchimp, ConvertKit, Beehiiv, etc.
-    // For now we simulate a 1-second network call:
-    setTimeout(function() {
-      console.log('Signup captured:', { firstName, lastName, email, phone });
-      form.style.display = 'none';
-      successMsg.style.display = 'flex';
-    }, 900);
-    // ─────────────────────────────────────────────────────────────
+    fetch('https://formspree.io/f/mbdpbjrv', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ firstName, lastName, email, phone })
+    }).then(function(res) {
+      if (res.ok) {
+        form.style.display = 'none';
+        successMsg.style.display = 'flex';
+      } else {
+        submitBtn.textContent = 'Something went wrong — try again';
+        submitBtn.disabled = false;
+      }
+    }).catch(function() {
+      submitBtn.textContent = 'Something went wrong — try again';
+      submitBtn.disabled = false;
+    });
   });
 })();
 </script>
